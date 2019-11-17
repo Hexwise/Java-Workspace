@@ -24,6 +24,22 @@ public class Statistics {
        sc.close();
     }
 
+    public static double tScore(double a[], int i) {
+        return (a[i] - mean(a)) / sampleStdDev(a));
+    }
+    
+    public static double tScore(double a[], double x) {
+        return (x - mean(a)) / sampleStdDev(a));
+    }
+
+    public static double zScore(double a[], int i) {
+        return (a[i] - mean(a)) / sampleStdDev(a));
+    }
+
+    public static double zScore(double a[], double x) {
+        return (x - mean(a)) / sampleStdDev(a));
+    }
+
     public static double popVariance(double a[]) { 
         // Compute mean (average  
         // of elements) 
@@ -79,12 +95,12 @@ public class Statistics {
         return Math.sqrt((sqrSum - Math.pow(sum, 2) / n) / n - 1); 
     }
 
-    public static double mean(int[] array) {
-        int sum = 0;
+    public static double mean(double[] array) {
+        double sum = 0;
         for(int i=0; i<array.length; i++) {
             sum += array[i];
         }
-        return (double)(sum)/ (double)(array.length);
+        return sum / (double)(array.length);
     }
     
     public static double meanRecursive(int[] array, int n) {
