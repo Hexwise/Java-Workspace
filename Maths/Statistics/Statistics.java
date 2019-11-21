@@ -110,6 +110,14 @@ public class Statistics {
         return q;
     }
 
+    public static double mean(int[] array) {
+        double sum = 0;
+        for(int i=0; i<array.length; i++) {
+            sum += array[i];
+        }
+        return sum / (double)(array.length);
+    }
+
     public static double mean(double[] array) {
         double sum = 0;
         for(int i=0; i<array.length; i++) {
