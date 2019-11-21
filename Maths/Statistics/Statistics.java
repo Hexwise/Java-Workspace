@@ -5,57 +5,30 @@ import java.util.Scanner;
 
 public class Statistics {
 
-    public static void main(String[] args) {
-       Scanner sc = new Scanner(System.in);
-       int n = Integer.parseInt(sc.nextLine().trim());
-       int[] array = new int[n];
-       double[] d = new double[n];
-       for(int i=0; i<n; i++) {
-           array[i] = sc.nextInt();
-           d[i] = (double) array[i];
-       }
-       System.out.println("mean: " + mean(array));
-       System.out.println("median: " + median(array));
-       System.out.println("mode: " + mode(array, n));
-       System.out.println("pop. variance.: " + popVariance(d));
-       System.out.println("pop. std. dev.: " + popStdDev(d));
-       System.out.println("sample variance.: " + sampleVariance(d));
-       System.out.println("sample std. dev.: " + sampleStdDev(d));
-       sc.close();
-    }
-
     public static double tScore(double a[], int i) {
-        return (a[i] - mean(a)) / sampleStdDev(a));
+        return (a[i] - mean(a)) / sampleStdDev(a);
     }
     
     public static double tScore(double a[], double x) {
-        return (x - mean(a)) / sampleStdDev(a));
+        return (x - mean(a)) / sampleStdDev(a);
     }
 
     public static double zScore(double a[], int i) {
-        return (a[i] - mean(a)) / sampleStdDev(a));
+        return (a[i] - mean(a)) / popStdDev(a);
     }
 
     public static double zScore(double a[], double x) {
-        return (x - mean(a)) / sampleStdDev(a));
+        return (x - mean(a)) / popStdDev(a);
     }
 
     public static double popVariance(double a[]) { 
-        // Compute mean (average  
-        // of elements) 
         double n = a.length;
-        double sum = 0; 
-        for (int i=0; i<(int)n; i++) 
-            sum += a[i]; 
-        double mean = sum / n; 
-      
-        // Compute sum squared  
-        // differences with mean. 
-        double sqDiff = 0; 
-        for (int i = 0; i < n; i++)  
-            sqDiff += (a[i] - mean) * (a[i] - mean); 
-          
-        return sqDiff / n; 
+        double m = mean(a);
+        double sumSqrDiff = 0; 
+        for (int i=0; i<n; i++)  {
+            sumSqrDiff += Math.pow((a[i] - m), 2); 
+        }
+        return sumSqrDiff / n; 
     } 
       
     public static double popStdDev(double arr[]) { 
@@ -63,21 +36,23 @@ public class Statistics {
     }
 
     public static double sampleVariance(double a[]) { 
-        // Compute mean (average  
-        // of elements) 
         double n = a.length;
-        double sum = 0; 
-        for (int i=0; i<(int)n; i++) 
-            sum += a[i]; 
-        double mean = sum / n; 
-      
-        // Compute sum squared  
-        // differences with mean. 
-        double sqDiff = 0; 
-        for (int i = 0; i < n; i++)  
-            sqDiff += (a[i] - mean) * (a[i] - mean); 
-          
-        return sqDiff / (n-1); 
+        double m = mean(a); 
+        double sumSqrDiff = 0; 
+        for (int i=0; i<n; i++) {  
+            sumSqrDiff += Math.pow((a[i] - m), 2); 
+        }  
+        return sumSqrDiff / (n-1); 
+    } 
+    
+     public static double sampleVariance(int a[]) { 
+        double n = a.length;
+        double m = mean(a); 
+        double sumSqrDiff = 0; 
+        for (int i=0; i<n; i++) {  
+            sumSqrDiff += Math.pow((a[i] - m), 2); 
+        }  
+        return sumSqrDiff / (n-1); 
     } 
       
     public static double sampleStdDev(double arr[]) { 
@@ -86,13 +61,13 @@ public class Statistics {
 
     public static double CompstdDev(int[] array) { // not working
         int sum = 0;
-        int sqrSum = 0;
+        int sumSqr = 0;
         int n = array.length;
         for(int i=0; i<n; i++) {
             sum += array[i];
-            sqrSum += (int) Math.pow(array[i], 2);
+            sumSqr += (int) Math.pow(array[i], 2);
         }
-        return Math.sqrt((sqrSum - Math.pow(sum, 2) / n) / n - 1); 
+        return Math.sqrt((sumSqr - Math.pow(sum, 2) / n) / n - 1); 
     }
 
     public static double[] quartiles(int[] a) {
@@ -111,19 +86,11 @@ public class Statistics {
     }
 
     public static double mean(int[] array) {
-        double sum = 0;
-        for(int i=0; i<array.length; i++) {
-            sum += array[i];
-        }
-        return sum / (double)(array.length);
+        return sum(array) / (double)(array.length);
     }
 
     public static double mean(double[] array) {
-        double sum = 0;
-        for(int i=0; i<array.length; i++) {
-            sum += array[i];
-        }
-        return sum / (double)(array.length);
+        return sum(array) / (double)(array.length);
     }
     
     public static double meanRecursive(int[] array, int n) {
@@ -239,6 +206,22 @@ public class Statistics {
             } 
         } 
         return res; 
+    }
+
+    public static int sum(int[] a) {
+        int sum = 0;
+        for(int i=0; i<2; i++) {
+            sum += a[i];
+        }
+        return sum;
+    }
+
+    public static double sum(double[] a) {
+        double sum = 0;
+        for(int i=0; i<2; i++) {
+            sum += a[i];
+        }
+        return sum;
     }
 }
 
