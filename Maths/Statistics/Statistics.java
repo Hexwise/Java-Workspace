@@ -95,6 +95,21 @@ public class Statistics {
         return Math.sqrt((sqrSum - Math.pow(sum, 2) / n) / n - 1); 
     }
 
+    public static double[] quartiles(int[] a) {
+        double[] q = new double[3];
+        int n = a.length;
+        q[1] = median(a);
+        if(n%2==0)  {
+            q[0] = median(Arrays.copyOfRange(a, 0, n/2));
+            q[2] = median(Arrays.copyOfRange(a, n/2, n)); 
+        }
+        else {
+             q[0] = median(Arrays.copyOfRange(a, 0, n/2));
+             q[2] = median(Arrays.copyOfRange(a, n/2+1, n));                 
+        }
+        return q;
+    }
+
     public static double mean(double[] array) {
         double sum = 0;
         for(int i=0; i<array.length; i++) {

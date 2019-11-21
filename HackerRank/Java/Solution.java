@@ -1,49 +1,37 @@
+import java.io.*;
 import java.util.*;
-import java.security.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
 public class Solution {
- public static void main(String[] args) {
 
-  DoNotTerminate.forbidExit();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
 
-  try {
-   Scanner in = new Scanner(System.in);
-   int n = in .nextInt();
-   in.close();
-   //String s=???; Complete this line below
 
-   String s = "";
-   if(-100 <= n && n <= 100) {
-       s = Integer.toString(n);
-   }
-   
-   if (n == Integer.parseInt(s)) {
-    System.out.println("Good job");
-   } else {
-    System.out.println("Wrong answer.");
-   }
-  } catch (DoNotTerminate.ExitTrappedException e) {
-   System.out.println("Unsuccessful Termination!!");
-  }
- }
-}
-
-//The following class will prevent you from terminating the code using exit(0)!
-class DoNotTerminate {
-
- public static class ExitTrappedException extends SecurityException {
-
-  private static final long serialVersionUID = 1;
- }
-
- public static void forbidExit() {
-  final SecurityManager securityManager = new SecurityManager() {
-   @Override
-   public void checkPermission(Permission permission) {
-    if (permission.getName().contains("exitVM")) {
-     throw new ExitTrappedException();
+        
     }
-   }
-  };
-  System.setSecurityManager(securityManager);
- }
-}
+
+    public static double[] quartiles(int[] a) {
+        double[] q = new double[3];
+        int n = a.length;
+        q[1] = median(a);
+        if(n%2==0)  {
+            q[0] = median(Arrays.copyOfRange(a, 0, n/2));
+            q[2] = median(Arrays.copyOfRange(a, n/2, n)); 
+        }
+        else {
+             q[0] = median(Arrays.copyOfRange(a, 0, n/2));
+             q[2] = median(Arrays.copyOfRange(a, n/2+1, n));                 
+        }
+        return q;
+    }
+
+    public static double interquartileRange(int[] a) {
+        double[] q = quartiles(a);
+        return q[2] - q[0];
+    }
+
+}// End Solution
