@@ -6,15 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Launch) - Current File",
+            "name": "CodeLens (Launch) - Solution",
             "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-Statistics<Java-Workspace_de1d603c>",
-            "request": "launch",
-            "mainClass": "Statistics",
+            "mainClass": "Solution",
             "projectName": "Java-Workspace_de1d603c"
         }
     ]
