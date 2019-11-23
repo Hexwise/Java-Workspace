@@ -128,16 +128,6 @@ public class Statistics {
     /*
     *
     */
-    public static double meanRecursive(int[] a, int n) {
-        if (n == 1)
-            return (double) a[n-1]; 
-        else
-            return ((double)(meanRecursive(a, n-1)*(n-1) + a[n-1]) / n); 
-    }
-    
-    /*
-    *
-    */
     public static double meanWeighted(int[] a, int[] weights) {
         int sum = 0;
         int weightSum = 0;
