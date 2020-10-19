@@ -108,11 +108,11 @@ public class BinaryTree<T>{
 
 	public int width(){
 		Queue queue = new Queue();
-		int treeHeight = root.height();
-		int[] level = new int[treeHeight];
+		int depth = 0;
+		int[] level = new int[root.height() + 1];
 		BinaryTree<T>.BinaryNode<T> newRoot = root;
 		while(newRoot != null){
-			level[newRoot.height() - treeHeight]++;
+			level[depth]++;
 			if(newRoot.getLeftNode() != null)
 				queue.enqueue(newRoot.getLeftNode());
 			if(newRoot.getRightNode() != null)
@@ -133,10 +133,10 @@ public class BinaryTree<T>{
 			BinaryTree<T>.BinaryNode<T> newRoot = root;
 			while(newRoot != null){
 				stringBuffer.append(newRoot.toString());
-				if(newRoot.getLeftNode() != null)
-					queue.enqueue(newRoot.getLeftNode());
 				if(newRoot.getRightNode() != null)
 					queue.enqueue(newRoot.getRightNode());
+				if(newRoot.getLeftNode() != null)
+					queue.enqueue(newRoot.getLeftNode());
 				newRoot = queue.dequeue();
 			}
 			return stringBuffer.toString();				
@@ -301,9 +301,12 @@ public class BinaryTree<T>{
 		private Node front;
 
 		public BinaryTree<T>.BinaryNode<T> dequeue(){
-			BinaryTree<T>.BinaryNode<T> prevFrontData = front.getData();
-			front = front.getNext();
-			return prevFrontData;
+			if(front != null) {
+				BinaryTree<T>.BinaryNode<T> prevFrontData = front.getData();
+				front = front.getNext();
+				return prevFrontData;
+			}
+			return null;
 		}
 
 		public void enqueue(BinaryTree<T>.BinaryNode<T> binaryNode) {
