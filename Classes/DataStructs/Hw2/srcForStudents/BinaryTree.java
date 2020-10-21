@@ -108,21 +108,29 @@ public class BinaryTree<T>{
 
 	public int width(){
 		Queue queue = new Queue();
-		int depth = 0;
-		int[] level = new int[root.height() + 1];
+		int nodes = 1;
+		int maxWidth = 0;
+		int i;
+		int j = 2;
 		BinaryTree<T>.BinaryNode<T> newRoot = root;
 		while(newRoot != null){
-			level[depth]++;
-			if(newRoot.getLeftNode() != null)
+			if(newRoot.getLeftNode() != null) {
 				queue.enqueue(newRoot.getLeftNode());
-			if(newRoot.getRightNode() != null)
+				nodes++;
+			}
+			if(newRoot.getRightNode() != null) {
 				queue.enqueue(newRoot.getRightNode());
+				nodes++;
+			}
 			newRoot = queue.dequeue();
 		}
-		int maxWidth = level[0];
-		for(int i=0; i<level.length; i++){
-			if(maxWidth < level[i])
-				maxWidth = level[i];
+		if(3 > nodes && nodes > 0)
+			maxWidth = 1;
+		for(i=3; i<=nodes; i+=j) {
+			maxWidth = j;
+			j*=2;
+			if(nodes-i > maxWidth)
+				maxWidth = nodes - i;
 		}
 		return maxWidth;
 	}
@@ -132,14 +140,14 @@ public class BinaryTree<T>{
 			Queue queue = new Queue();
 			BinaryTree<T>.BinaryNode<T> newRoot = root;
 			while(newRoot != null){
-				stringBuffer.append(newRoot.toString());
-				if(newRoot.getRightNode() != null)
-					queue.enqueue(newRoot.getRightNode());
+				stringBuffer.append(newRoot.toString() + " ");
 				if(newRoot.getLeftNode() != null)
 					queue.enqueue(newRoot.getLeftNode());
+				if(newRoot.getRightNode() != null)
+					queue.enqueue(newRoot.getRightNode());
 				newRoot = queue.dequeue();
 			}
-			return stringBuffer.toString();				
+			return stringBuffer.toString().trim();				
 	}
 
 	public String preOrderTraverse(){
@@ -216,7 +224,7 @@ public class BinaryTree<T>{
 
 
 		public String preOrderTraverse(){
-			StringBuilder stringBuffer = new StringBuilder();			
+			StringBuilder stringBuffer = new StringBuilder();
 			
 			stringBuffer.append(" " + data);
 			
@@ -251,13 +259,13 @@ public class BinaryTree<T>{
 			StringBuilder stringBuffer = new StringBuilder();			
 			
 			if(leftNode != null){
-				stringBuffer.append(leftNode.preOrderTraverse());				
+				stringBuffer.append(leftNode.inOrderTraverse());				
 			}
 			
 			stringBuffer.append(" " + data);
 
 			if(rightNode != null){
-				stringBuffer.append(rightNode.preOrderTraverse());
+				stringBuffer.append(rightNode.inOrderTraverse());
 			}
 
 			return stringBuffer.toString();				
@@ -284,17 +292,27 @@ public class BinaryTree<T>{
 					return data.toString();
 				return data.toString() + " " + next.toString();
 			}
+
 			public BinaryTree<T>.BinaryNode<T> getData(){
 				return data;
 			}
+
 			public Node getNext(){
 				return next;
 			}
+
 			public void setData(BinaryTree<T>.BinaryNode<T> data){
 				this.data = data;
 			}
+
 			public void setNext(Node next){
 				this.next = next;
+			}
+
+			public boolean hasNext(){
+				if(this.next == null)
+					return false;
+				return true;
 			}
 		}
 
@@ -313,8 +331,11 @@ public class BinaryTree<T>{
 			if (front == null)
 				front = new Node(binaryNode);
 			else {
-				Node second = front;
-				front = new Node(binaryNode, second);
+				Node next = front;
+				while(next.hasNext()) {
+					next = next.getNext();
+				}
+				next.setNext(new Node(binaryNode));
 			}
 		}
 

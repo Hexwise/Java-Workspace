@@ -6,23 +6,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Startup",
-            "request": "launch",
-            "mainClass": "Startup",
-            "projectName": "Java-Workspace_de1d603c"
-        },
-        {
-            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
         },
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Startup",
+            "name": "Debug (Launch)-Startup<DataStructs_cdcac538>",
             "request": "launch",
-            "mainClass": "Startup.class",
-            "projectName": "Java-Workspace_de1d603c"
+            "mainClass": "Startup",
+            "projectName": "DataStructs_cdcac538"
         }
     ]
 }
