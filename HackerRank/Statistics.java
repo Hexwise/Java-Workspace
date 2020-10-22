@@ -1,10 +1,6 @@
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
-public class Solution {
+public class Statistics {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -70,7 +66,7 @@ public class Solution {
         return Math.sqrt(sampleVariance(arr)); 
     } 
 
-    public static double CompstdDev(int[] array) { // not working
+    public static double CompStdDev(int[] array) { // not working
         int sum = 0;
         int sqrSum = 0;
         int n = array.length;
