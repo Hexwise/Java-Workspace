@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.Queue;
 import java.util.ArrayList;
 
 public class BinaryTree<T>{
@@ -81,7 +80,7 @@ public class BinaryTree<T>{
 	private void handleNonNullParentNode(List<BinaryNode<T>> nodes, 
 								int parentIndex, T[] seq){
 		int leftIndex = (parentIndex * 2) + 1;			
-		if(leftIndex < seq.length){ //need to check if the index falls outdise of the list index
+		if(leftIndex < seq.length){ //need to check if the index falls outside of the list index
 			BinaryNode<T> leftNode = null;
 			if(!seq[leftIndex].equals(nullSymbol)){
 				leftNode = new BinaryNode<T>(seq[leftIndex]);
