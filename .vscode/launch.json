@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TagParser",
+            "request": "launch",
+            "mainClass": "TagParser",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SplitString",
+            "request": "launch",
+            "mainClass": "SplitString",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "Solution",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Startup",
             "request": "launch",
             "mainClass": "Startup",
