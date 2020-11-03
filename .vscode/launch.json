@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TagParser2",
+            "request": "launch",
+            "mainClass": "TagParser2",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - TagParser",
             "request": "launch",
             "mainClass": "TagParser",

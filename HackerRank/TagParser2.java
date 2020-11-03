@@ -4,7 +4,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class TagParser{
+public class TagParser2{
 
 	private static String extractBetweenTags(String line) {
 			String regex = "<([\\s\\S]+)>([\\s\\S]*)</\\1>";
@@ -23,21 +23,13 @@ public class TagParser{
 		while(testCases>0){
 			String line = in.nextLine();
             //Write your code here
-			String regex = "<([\\s\\S]+)>([\\s\\S]+)</\\1>";
+			String regex = "[<([\\s\\S])+>]+([\\s\\S]+)[</\1>]+" ;
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(line);
 			boolean none = true;
 			while(matcher.find()) {
-				String innerText = extractBetweenTags(matcher.group(2));
-				if(!innerText.isEmpty()) {
-					regex = "<[\\s\\S]+>";
-					pattern = Pattern.compile(regex);
-					Matcher matcher2 = pattern.matcher(innerText);
-					if(!matcher2.find()) {
-					System.out.println(innerText);
-					none = false;
-					}
-				}
+				System.out.println(matcher.group(2));
+				none = false;	
 			}
 			if(none)
 				System.out.println("None");
