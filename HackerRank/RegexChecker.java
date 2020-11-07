@@ -17,6 +17,7 @@ public class RegexChecker {
                     System.out.println("Invalid");
                 }
                 testCases--;
-		}
+        }
+        in.close();
 	}
 }
