@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ArrayListQuery",
+            "request": "launch",
+            "mainClass": "ArrayListQuery",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - NegativeSubArraySum",
+            "request": "launch",
+            "mainClass": "NegativeSubArraySum",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - HourGlassSum2D",
+            "request": "launch",
+            "mainClass": "HourGlassSum2D",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BigDecimalDescendingOrder",
+            "request": "launch",
+            "mainClass": "BigDecimalDescendingOrder",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Anagram",
+            "request": "launch",
+            "mainClass": "Anagram",
+            "projectName": "Java-Workspace_de1d603c"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - TagParser2",
             "request": "launch",
             "mainClass": "TagParser2",
