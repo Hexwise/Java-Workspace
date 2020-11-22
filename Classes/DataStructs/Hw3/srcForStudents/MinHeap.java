@@ -6,9 +6,16 @@ public class MinHeap<T extends Comparable<? super T>> {
     private int capacity;
     private int size = 0;
     
-    public MinHeap(T[] heap) {  
-        this.heap = heap;
+    @SuppressWarnings("unchecked")
+    public MinHeap(T[] heap) {
         capacity = heap.length;
+        if (capacity == 0)
+            capacity++;
+        this.heap = (T[]) new Comparable[capacity];
+        for (T element: heap) {
+            if (element != null)
+                insert(element);
+        }
     } 
 
     public void insert(T element) {
@@ -20,7 +27,9 @@ public class MinHeap<T extends Comparable<? super T>> {
 
     public T remove() {
         if (isEmpty())
-            throw new IllegalArgumentException("Heap is empty, cannot remove a node.");
+            throw new IllegalArgumentException(
+                "Heap is empty, cannot remove a node."
+            );
         T min = heap[0];
         heap[0] = heap[size - 1];
         size--;

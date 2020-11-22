@@ -16,11 +16,7 @@ public class BigDecimalDescendingOrder {
                     this.hasLeadingDecimal = node.hasLeadingDecimal();
                 }
 
-                public BigDecimal getKey() {
-                    return key;
-                }
-
-                public boolean hasLeadingDecimal(){
+                public boolean hasLeadingDecimal() {
                     return hasLeadingDecimal;
                 }
 
@@ -72,10 +68,6 @@ public class BigDecimalDescendingOrder {
                 return duplicates.size();
             }
 
-            public boolean hasDuplicates() {
-                return (duplicates.size() > 0)? true : false;
-            }
-
             public void addDuplicate(Node node) {
                 duplicates.add(new Duplicate(node));
             }
@@ -99,10 +91,6 @@ public class BigDecimalDescendingOrder {
         private Node root;
 
         public BinarySearchTree(){};
-
-        public BinarySearchTree(BigDecimal key, boolean hasLeadingDecimal) {
-            root = new Node(key, hasLeadingDecimal);
-        }
 
         public void add(BigDecimal key, boolean hasLeadingDecimal) {
             if(root == null)
